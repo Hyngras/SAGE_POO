@@ -24,8 +24,8 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
 
 ## Estrutura do Projeto
 
-## Histórias de Usuário [(HU-001 a HU-007)](docs/Historias.md) 
-  > Documento com histórias completas, regras de negócio e cenários BDD.
+## Histórias de Usuário 
+  > Documento descrevendo regras de negócio e cenários BDD: [HU-001 a HU-007](docs/Historias.md)  
 
 ## Protótipo Lo-Fi (Figma)  
   > Link para o protótipo: [Figma - Protótipo Lo-Fi](https://www.figma.com/)  
