@@ -31,6 +31,6 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
   > Link para o protótipo: [Figma - Protótipo Lo-Fi](https://www.figma.com/)  
 
 ## Screencast do Protótipo (YouTube)  
-  > Link para o vídeo: [YouTube - Protótipo Lo-Fi](https://youtube.com/)  
+  > Link para o vídeo: [YouTube - Protótipo Lo-Fi](https://youtube.com/](https://youtu.be/WLbz_-dBa8k))  
 
 ---
