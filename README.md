@@ -27,9 +27,10 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
 <details open>
 <summary>Entrega 01</summary>
 A primeira entrega visa garantir o alinhamento inicial do projeto, documentando claramente as funcionalidades esperadas e preparando a base visual para seu desenvolvimento. Os critérios exigidos são:
-- Documento de requisitos e histórias de usuário ([Historias.md](Historias.md))
-- Protótipo Lo-Fi no Figma ([Protótipo Figma](https://www.figma.com/design/fNpzjR1EqV8dfAkAnqauC4/SAGE?node-id=0-1&p=f))
-- Screencast apresentando o protótipo ([YouTube](https://youtu.be/WLbz_-dBa8k))
+  
+- Documento descrevendo regras de negócio e cenários BDD: [Historias](Historias.md) 
+- Link para o protótipo: [Figma - Protótipo](https://www.figma.com/design/fNpzjR1EqV8dfAkAnqauC4/SAGE?node-id=0-1&p=f)
+- Screencast apresentando o protótipo [YouTube - Protótipo](https://youtu.be/WLbz_-dBa8k)  
 
 </details>
 
