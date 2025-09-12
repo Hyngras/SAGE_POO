@@ -1,183 +1,272 @@
 # Histórias de Usuário — Projeto SAGE (POO em Java)
 
-Este documento reúne as histórias de usuário definidas para o MVP do **SAGE — Sistema de Acompanhamento e Gerenciamento de Equipamentos Hospitalares**
-
-## Índice
-1. [HU-001 — Cadastro de Equipamento](#hu-001--cadastro-de-equipamento)  
-2. [HU-002 — Consulta de Equipamento](#hu-002--consulta-de-equipamento)  
-3. [HU-003 — Abertura de Ordem de Serviço](#hu-003--abertura-de-ordem-de-serviço)  
-4. [HU-004 — Atribuição de Técnico à O.S.](#hu-004--atribuição-de-técnico-à-os)  
-5. [HU-005 — Fechamento de O.S. com Relatório](#hu-005--fechamento-de-os-com-relatório)  
-6. [HU-006 — Alertas de Manutenção Preventiva](#hu-006--alertas-de-manutenção-preventiva)  
-7. [HU-007 — Dashboard de Status de O.S.](#hu-007--dashboard-de-status-de-os)
+Disciplina: Programação Orientada a Objetos (POO)  
+Instituição: CESAR School  
+Equipe: Diego Alves Xavier, Hyngrid Souza e Silva, Pamela Teixeira Rodrigues  
 
 ---
 
-## HU-001 — Cadastro de Equipamento
-**Ator:** Gestor  
-**Resumo:** Como gestor, quero cadastrar equipamentos com dados técnicos e criticidade para que possam ser gerenciados no ciclo de manutenção.  
+## HU-001 — Visualização de Dashboard
+**História do Usuário:**  
+Como gestor hospitalar, quero ver um painel de controle com status dos equipamentos e ordens de serviço, para tomar decisões rápidas.
 
-### Regras de Negócio
-- RN1 — Patrimônio único e obrigatório.  
-- RN2 — Campos obrigatórios: patrimônio, tipo, fabricante, localização, criticidade, data de aquisição.  
-- RN3 — Criticidade ∈ {BAIXA, MÉDIA, ALTA}.  
-- RN4 — Datas coerentes (não futuras).  
-- RN5 — Status inicial = OPERACIONAL.  
-- RN6 — Auditoria mínima (`criadoPor`, `criadoEm`).  
+**Critérios de Aceitação:**
+- Exibir status dos equipamentos e O.S. abertas.  
+- Incluir indicadores visuais de criticidade.  
+- Permitir filtros por período e tipo de manutenção.  
 
-### Critérios de Aceitação
-- CA1 — Cadastro válido cria equipamento OPERACIONAL.  
-- CA2 — Patrimônio duplicado bloqueia cadastro.  
-- CA3 — Campos obrigatórios validados.  
-- CA4 — Equipamento aparece na listagem após cadastro.  
+**Regras de Negócio (RN):**
+- RN1 — O dashboard deve agregar dados de todas as O.S. em memória.  
+- RN2 — Indicadores de criticidade devem seguir padrão (verde, amarelo, vermelho).  
+- RN3 — Filtros devem considerar período (dia, semana, mês) e tipo (preventiva/corretiva).  
 
-### Cenários BDD
-- **Cenário 1:** Cadastro bem-sucedido.  
-- **Cenário 2:** Patrimônio duplicado.  
-- **Cenário 3:** Campo obrigatório ausente.  
-- **Cenário 4:** Criticidade inválida.  
-- **Cenário 5:** Data de aquisição futura.  
-- **Cenário 6:** Próxima manutenção no passado.  
-- **Cenário 7:** Registro de auditoria.  
+**Cenários BDD:**
+- **Given** que existem O.S. abertas,  
+  **When** acesso o dashboard,  
+  **Then** devo ver a contagem de O.S. por status.  
+- **Given** que aplico filtro por mês,  
+  **When** confirmo a seleção,  
+  **Then** só O.S. do período devem aparecer.  
+
+**Implementação do Protótipo:**
+<img width="917" height="699" alt="Captura de tela de 2025-09-12 14-36-33" src="https://github.com/user-attachments/assets/256b336d-def5-4c20-bc7f-bc1e9ad1b1af" />
+
 
 ---
 
 ## HU-002 — Consulta de Equipamento
-**Ator:** Técnico ou Gestor  
-**Resumo:** Como técnico, quero consultar equipamentos por patrimônio, nome ou localização para localizar rapidamente o alvo da manutenção.  
+**História do Usuário:**  
+Como técnico de manutenção, quero consultar um equipamento pelo código ou nome, para ver seu histórico de manutenção.
 
-### Regras de Negócio
-- RN1 — Permitir busca por patrimônio, termo, localização ou criticidade.  
-- RN2 — Ordenação padrão: criticidade (desc) + patrimônio (asc).  
-- RN3 — Sempre exibir status atual.  
-- RN4 — Paginação: máx. 20 itens/página.  
+**Critérios de Aceitação:**
+- Permitir busca por nome, código ou categoria.  
+- Mostrar status atual do equipamento.  
+- Listar histórico completo de manutenções.  
 
-### Critérios de Aceitação
-- CA1 — Buscar por patrimônio retorna 1 resultado exato.  
-- CA2 — Termos e filtros retornam lista ordenada.  
-- CA3 — Sempre exibir patrimônio, tipo, fabricante, localização, criticidade, status.  
-- CA4 — Mensagem clara quando sem resultados.  
+**Regras de Negócio (RN):**
+- RN1 — Cada equipamento deve ter um identificador único.  
+- RN2 — O status exibido deve refletir a última O.S. relacionada.  
+- RN3 — Histórico deve incluir todas as intervenções (preventivas e corretivas).  
 
-### Cenários BDD
-- **Cenário 1:** Consulta por patrimônio encontrado.  
-- **Cenário 2:** Consulta por termo com múltiplos resultados.  
-- **Cenário 3:** Filtros por localização e criticidade.  
-- **Cenário 4:** Sem resultados.  
-- **Cenário 5:** Paginação funcionando.  
+**Cenários BDD:**
+- **Given** que existe um equipamento cadastrado,  
+  **When** busco pelo código,  
+  **Then** o sistema deve retornar os dados e status atuais.  
+- **Given** que não existe equipamento com o código informado,  
+  **When** executo a busca,  
+  **Then** o sistema deve exibir mensagem “nenhum resultado encontrado”.  
 
 ---
 
-## HU-003 — Abertura de Ordem de Serviço
-**Ator:** Técnico  
-**Resumo:** Como técnico, quero abrir uma O.S. vinculada a um equipamento, informando problema e prioridade, para iniciar manutenção.  
+## HU-003 — Abertura de Ordem de Serviço (O.S.)
+**História do Usuário:**  
+Como técnico de manutenção, quero abrir uma O.S. rapidamente, para garantir que os equipamentos sejam reparados sem atrasos.
 
-### Regras de Negócio
+**Critérios de Aceitação:**
+- Selecionar equipamento e relatar problema.  
+- Definir prioridade da O.S. (Baixa, Média, Alta).  
+- Atribuir técnico responsável.  
+
+**Regras de Negócio (RN):**
 - RN1 — O.S. só pode ser aberta para equipamento existente.  
-- RN2 — Campos obrigatórios: equipamentoId, descrição, prioridade ∈ {BAIXA, MÉDIA, ALTA}.  
-- RN3 — Status inicial = ABERTA.  
-- RN4 — Abrir O.S. altera status do equipamento para MANUTENÇÃO.  
-- RN5 — Permitir múltiplas O.S., mas sinalizar duplicidade.  
+- RN2 — Status inicial da O.S. deve ser **ABERTA**.  
+- RN3 — O equipamento associado deve mudar para status **EM MANUTENÇÃO**.  
 
-### Critérios de Aceitação
-- CA1 — Persistir O.S. válida com status correto.  
-- CA2 — Validar prioridade e equipamento.  
-- CA3 — Atualizar status do equipamento.  
-- CA4 — Aviso em caso de O.S. já aberta.  
-
-### Cenários BDD
-- **Cenário 1:** Abertura bem-sucedida.  
-- **Cenário 2:** Equipamento inexistente.  
-- **Cenário 3:** Prioridade inválida.  
-- **Cenário 4:** O.S. pré-existente.  
+**Cenários BDD:**
+- **Given** que estou logado como técnico,  
+  **When** seleciono um equipamento e crio O.S.,  
+  **Then** a O.S. deve ser salva com status “ABERTA”.  
+- **Given** que a prioridade não é selecionada,  
+  **When** salvo a O.S.,  
+  **Then** o sistema deve retornar erro de validação.  
 
 ---
 
 ## HU-004 — Atribuição de Técnico à O.S.
-**Ator:** Gestor  
-**Resumo:** Como gestor, quero atribuir técnico a uma O.S. para garantir responsabilidade.  
+**História do Usuário:**  
+Como gestor, quero atribuir um técnico responsável a uma O.S., para garantir que ela seja atendida.
 
-### Regras de Negócio
-- RN1 — Apenas Gestor/Admin podem atribuir.  
-- RN2 — Técnico deve existir e ter perfil válido.  
-- RN3 — Só atribuir se O.S. estiver ABERTA/EM_ANDAMENTO.  
-- RN4 — Status vai para EM_ANDAMENTO.  
+**Critérios de Aceitação:**
+- Permitir seleção de técnico válido.  
+- Atualizar O.S. com responsável e data de atribuição.  
+- Alterar status para **EM ANDAMENTO**.  
 
-### Critérios de Aceitação
-- CA1 — Validar permissão do usuário.  
-- CA2 — Validar técnico existente.  
-- CA3 — Atualizar status e auditoria.  
+**Regras de Negócio (RN):**
+- RN1 — Apenas gestor pode atribuir técnico.  
+- RN2 — Técnico deve estar cadastrado no sistema.  
+- RN3 — Uma O.S. não pode ser atribuída duas vezes sem antes ser fechada.  
 
-### Cenários BDD
-- **Cenário 1:** Atribuição bem-sucedida.  
-- **Cenário 2:** Usuário sem permissão.  
-- **Cenário 3:** Técnico inválido.  
+**Cenários BDD:**
+- **Given** que existe uma O.S. aberta,  
+  **When** atribuo um técnico válido,  
+  **Then** a O.S. muda para “EM ANDAMENTO”.  
 
 ---
 
 ## HU-005 — Fechamento de O.S. com Relatório
-**Ator:** Técnico  
-**Resumo:** Como técnico, quero fechar uma O.S. com relatório de intervenção para manter histórico.  
+**História do Usuário:**  
+Como técnico de manutenção, quero registrar detalhes da O.S. ao encerrá-la, para manter um histórico completo das intervenções.
 
-### Regras de Negócio
-- RN1 — Só fechar se status = EM_ANDAMENTO e atribuída ao técnico.  
-- RN2 — Campos obrigatórios: descrição, tempo gasto > 0.  
-- RN3 — Registrar peças utilizadas (opcional).  
-- RN4 — Status vai para FECHADA.  
-- RN5 — Equipamento volta para OPERACIONAL se não houver O.S. abertas.  
+**Critérios de Aceitação:**
+- O técnico pode adicionar descrição da manutenção realizada.  
+- Registrar peças substituídas e tempo gasto.  
+- Gerar relatório automático da intervenção.  
 
-### Critérios de Aceitação
-- CA1 — Impedir fechamento sem descrição/tempo.  
-- CA2 — Validar autoria (técnico ou gestor).  
-- CA3 — Atualizar status da O.S. e equipamento.  
+**Regras de Negócio (RN):**
+- RN1 — O.S. só pode ser fechada por técnico atribuído ou gestor.  
+- RN2 — É obrigatório registrar descrição e tempo gasto.  
+- RN3 — Após fechamento, status deve ser atualizado para **FECHADA**.  
 
-### Cenários BDD
-- **Cenário 1:** Fechamento por técnico responsável.  
-- **Cenário 2:** Fechamento sem descrição.  
-- **Cenário 3:** Fechamento por gestor.  
+**Cenários BDD:**
+- **Given** que existe uma O.S. em andamento,  
+  **When** insiro descrição e tempo gasto,  
+  **Then** a O.S. deve mudar para “FECHADA” e integrar ao histórico.  
 
 ---
 
-## HU-006 — Alertas de Manutenção Preventiva
-**Ator:** Gestor  
-**Resumo:** Como gestor, quero visualizar alertas de equipamentos com manutenção vencida ou próxima para planejar intervenções.  
+## HU-006 — Controle de Contratos
+**História do Usuário:**  
+Como gestor hospitalar, quero monitorar contratos com fornecedores, para garantir conformidade e evitar problemas operacionais.
 
-### Regras de Negócio
-- RN1 — Vencidos: proximaManutencao < hoje.  
-- RN2 — Próximos: proximaManutencao ≤ hoje + janelaDias.  
-- RN3 — Ordenar por criticidade e data.  
-- RN4 — Filtro por localização opcional.  
-- RN5 — Equipamentos sem preventiva → seção separada.  
+**Critérios de Aceitação:**
+- Permitir cadastro e visualização dos contratos.  
+- Gerar alertas para contratos próximos ao vencimento.  
+- Anexar documentos contratuais.  
 
-### Critérios de Aceitação
-- CA1 — Listar vencidos, próximos e sem data separadamente.  
-- CA2 — Exibir campos-chave (patrimônio, criticidade, data).  
-- CA3 — Configurar janela de dias.  
+**Regras de Negócio (RN):**
+- RN1 — Alertas devem ser enviados com 30 dias de antecedência.  
+- RN2 — Cada contrato deve ter data de início, término e fornecedor.  
+- RN3 — O contrato deve ser associado a pelo menos um equipamento.  
 
-### Cenários BDD
-- **Cenário 1:** Vencidos aparecem corretamente.  
-- **Cenário 2:** Próximos dentro de 30 dias.  
-- **Cenário 3:** Sem preventiva definida.  
-- **Cenário 4:** Filtro por localização.  
+**Cenários BDD:**
+- **Given** que existe contrato próximo do vencimento,  
+  **When** acesso o painel de contratos,  
+  **Then** devo ver alerta destacado.  
 
 ---
 
-## HU-007 — Dashboard de Status de O.S.
-**Ator:** Gestor  
-**Resumo:** Como gestor, quero um dashboard com contagem de O.S. por status e prioridade para monitorar demandas.  
+## HU-007 — Alertas Automáticos de Manutenção
+**História do Usuário:**  
+Como administrador da clínica, quero receber alertas sobre manutenções programadas, para garantir que os equipamentos estejam sempre operacionais.
 
-### Regras de Negócio
-- RN1 — Agregar por status e prioridade.  
-- RN2 — Permitir filtro por período (últimos 30 dias padrão).  
-- RN3 — Destacar O.S. críticas abertas.  
+**Critérios de Aceitação:**
+- Alertas automáticos para manutenções preventivas.  
+- Notificações sobre falhas recorrentes.  
+- Opção de configurar preferências para receber alertas.  
 
-### Critérios de Aceitação
-- CA1 — Exibir totais por status e prioridade.  
-- CA2 — Período configurável.  
-- CA3 — Alerta de O.S. críticas (ALTA + ABERTA).  
+**Regras de Negócio (RN):**
+- RN1 — O sistema deve verificar falhas recorrentes (≥ 3 vezes/mês).  
+- RN2 — Notificações podem ser via e-mail ou painel interno.  
+- RN3 — Alertas de preventiva devem ser gerados no prazo configurado.  
 
-### Cenários BDD
-- **Cenário 1:** Totais padrão últimos 30 dias.  
-- **Cenário 2:** Totais filtrados por período.  
-- **Cenário 3:** Alerta de críticas exibido.  
+**Cenários BDD:**
+- **Given** que um equipamento tem manutenção preventiva agendada,  
+  **When** a data se aproxima,  
+  **Then** o sistema deve enviar notificação ao gestor.  
+
+---
+
+## HU-008 — Geração de Relatórios
+**História do Usuário:**  
+Como gestor hospitalar ou administrador, quero gerar relatórios sobre status dos equipamentos e O.S., para analisar métricas de desempenho.
+
+**Critérios de Aceitação:**
+- Permitir filtros personalizados para gerar relatórios.  
+- Mostrar tempo médio de resposta e custo de manutenção.  
+- Possibilidade de exportação em PDF e Excel.  
+
+**Regras de Negócio (RN):**
+- RN1 — Relatórios devem ser gerados em tempo real.  
+- RN2 — Indicadores obrigatórios: tempo médio de resposta e custo total.  
+- RN3 — Deve existir opção de exportar em PDF e Excel.  
+
+**Cenários BDD:**
+- **Given** que existem O.S. registradas,  
+  **When** seleciono período e filtro,  
+  **Then** devo obter relatório com métricas calculadas.  
+
+---
+
+## HU-009 — Gerenciamento de Estoque de Peças
+**História do Usuário:**  
+Como técnico de manutenção, quero ter controle sobre as peças disponíveis no estoque, para evitar atrasos na manutenção por falta de insumos.
+
+**Critérios de Aceitação:**
+- Permitir cadastro e controle de estoque de peças.  
+- Notificar sobre itens com estoque baixo.  
+- Registrar histórico de uso de peças em manutenções.  
+
+**Regras de Negócio (RN):**
+- RN1 — Cada peça deve ter código único.  
+- RN2 — Alerta de estoque deve disparar quando quantidade ≤ mínimo definido.  
+- RN3 — Histórico deve vincular peça usada à O.S. correspondente.  
+
+**Cenários BDD:**
+- **Given** que uma peça tem estoque < mínimo,  
+  **When** consulto o estoque,  
+  **Then** o sistema deve exibir alerta de “estoque baixo”.  
+
+---
+
+## HU-010 — Cadastro e Classificação de Equipamentos
+**História do Usuário:**  
+Como administrador da clínica, quero cadastrar novos equipamentos no sistema, para controlar seu ciclo de vida e manutenções.
+
+**Critérios de Aceitação:**
+- Permitir cadastro de novos equipamentos com detalhes técnicos.  
+- Classificar equipamentos por tipo, localização e criticidade.  
+- Vincular equipamentos a contratos de manutenção.  
+
+**Regras de Negócio (RN):**
+- RN1 — Campos obrigatórios: patrimônio, tipo, fabricante, localização, criticidade.  
+- RN2 — Criticidade deve ser uma entre {BAIXA, MÉDIA, ALTA}.  
+- RN3 — Equipamento deve ser vinculado a pelo menos uma categoria.  
+
+**Cenários BDD:**
+- **Given** que insiro patrimônio, tipo e fabricante,  
+  **When** salvo cadastro,  
+  **Then** o sistema deve armazenar equipamento com status inicial “OPERACIONAL”.  
+
+---
+
+## HU-011 — Painel de Prioridades e Urgências
+**História do Usuário:**  
+Como gestor hospitalar, quero visualizar um painel que prioriza as O.S. mais urgentes, para direcionar esforços rapidamente para as demandas críticas.
+
+**Critérios de Aceitação:**
+- Criar um painel destacando O.S. urgentes.  
+- Permitir reordenação de prioridades em tempo real.  
+- Integrar com alertas automáticos para notificação de emergências.  
+
+**Regras de Negócio (RN):**
+- RN1 — O.S. críticas (Alta prioridade) devem ser destacadas em vermelho.  
+- RN2 — Mudança de prioridade deve refletir imediatamente no painel.  
+- RN3 — O painel deve sempre ordenar O.S. urgentes no topo.  
+
+**Cenários BDD:**
+- **Given** que existe uma O.S. Média,  
+  **When** altero prioridade para Alta,  
+  **Then** ela deve subir para o topo do painel de prioridades.  
+
+---
+
+## HU-012 — Histórico de Intervenções Técnicas
+**História do Usuário:**  
+Como técnico de manutenção, quero acessar um histórico detalhado de todas as intervenções já realizadas em um equipamento, para analisar padrões e prever falhas futuras.
+
+**Critérios de Aceitação:**
+- Exibir histórico cronológico das intervenções técnicas.  
+- Permitir filtros por tipo de falha ou componente trocado.  
+- Gerar insights sobre padrões de falha recorrentes.  
+
+**Regras de Negócio (RN):**
+- RN1 — O histórico deve registrar data, técnico, O.S. associada e ação realizada.  
+- RN2 — Intervenções devem ser ordenadas do mais recente para o mais antigo.  
+- RN3 — Deve ser possível filtrar por tipo de falha ou peça substituída.  
+
+**Cenários BDD:**
+- **Given** que acesso o histórico de um equipamento,  
+  **When** aplico filtro por componente trocado,  
+  **Then** só intervenções relacionadas devem aparecer.  
 
 ---
