@@ -27,10 +27,10 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
 ## Histórias de Usuário (HU-001 a HU-007)
   > Documento descrevendo regras de negócio e cenários BDD: [Historias](Historias.md)  
 
-## Protótipo Lo-Fi (Figma)  
-  > Link para o protótipo: [Figma - Protótipo Lo-Fi](https://www.figma.com/)  
+## Protótipo (Figma)  
+  > Link para o protótipo: [Figma - Protótipo](https://www.figma.com/design/fNpzjR1EqV8dfAkAnqauC4/SAGE?node-id=0-1&p=f)  
 
 ## Screencast do Protótipo (YouTube)  
-  > Link para o vídeo: [YouTube - Protótipo Lo-Fi](https://youtu.be/WLbz_-dBa8k)  
+  > Link para o vídeo: [YouTube - Protótipo](https://youtu.be/WLbz_-dBa8k)  
 
 ---
