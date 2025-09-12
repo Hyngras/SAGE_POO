@@ -31,7 +31,6 @@ Como gestor hospitalar, quero ver um painel de controle com status dos equipamen
 **Implementação do Protótipo:**
 <img width="917" height="699" alt="Captura de tela de 2025-09-12 14-36-33" src="https://github.com/user-attachments/assets/256b336d-def5-4c20-bc7f-bc1e9ad1b1af" />
 
-
 ---
 
 ## HU-002 — Consulta de Equipamento
@@ -56,6 +55,9 @@ Como técnico de manutenção, quero consultar um equipamento pelo código ou no
   **When** executo a busca,  
   **Then** o sistema deve exibir mensagem “nenhum resultado encontrado”.  
 
+**Implementação do Protótipo:**
+<img width="908" height="699" alt="Captura de tela de 2025-09-12 14-39-40" src="https://github.com/user-attachments/assets/327b2717-6ec8-410a-a9a2-a247a2b6ffc2" />
+
 ---
 
 ## HU-003 — Abertura de Ordem de Serviço (O.S.)
@@ -79,6 +81,9 @@ Como técnico de manutenção, quero abrir uma O.S. rapidamente, para garantir q
 - **Given** que a prioridade não é selecionada,  
   **When** salvo a O.S.,  
   **Then** o sistema deve retornar erro de validação.  
+
+**Implementação do Protótipo:**
+<img width="917" height="699" alt="Captura de tela de 2025-09-12 14-38-32" src="https://github.com/user-attachments/assets/b9332889-7800-4135-b9ef-4f6856afa0e9" />
 
 ---
 
@@ -122,6 +127,9 @@ Como técnico de manutenção, quero registrar detalhes da O.S. ao encerrá-la, 
   **When** insiro descrição e tempo gasto,  
   **Then** a O.S. deve mudar para “FECHADA” e integrar ao histórico.  
 
+**Implementação do Protótipo:**
+<img width="908" height="681" alt="Captura de tela de 2025-09-12 14-41-00" src="https://github.com/user-attachments/assets/1442a3c6-623a-401e-a768-5e806baae244" />
+
 ---
 
 ## HU-006 — Controle de Contratos
@@ -142,6 +150,9 @@ Como gestor hospitalar, quero monitorar contratos com fornecedores, para garanti
 - **Given** que existe contrato próximo do vencimento,  
   **When** acesso o painel de contratos,  
   **Then** devo ver alerta destacado.  
+
+**Implementação do Protótipo:**
+<img width="908" height="681" alt="Captura de tela de 2025-09-12 14-41-29" src="https://github.com/user-attachments/assets/eaf00445-0ad0-4bf6-9e56-98f41ff2cb7a" />
 
 ---
 
