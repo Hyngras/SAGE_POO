@@ -28,7 +28,7 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
 <summary>Entrega 01</summary>
 A primeira entrega visa garantir o alinhamento inicial do projeto, documentando claramente as funcionalidades esperadas e preparando a base visual para seu desenvolvimento. Os critérios exigidos são:
   
-- Documento descrevendo regras de negócio e cenários BDD: [Historias](Historias.md) 
+- Documento descrevendo regras de negócio e cenários BDD: [Historias](Arquivos/Historias.md) 
 - Link para o protótipo: [Figma - Protótipo](https://www.figma.com/design/fNpzjR1EqV8dfAkAnqauC4/SAGE?node-id=0-1&p=f)
 - Screencast apresentando o protótipo [YouTube - Protótipo](https://youtu.be/WLbz_-dBa8k)  
 
