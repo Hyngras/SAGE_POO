@@ -1,0 +1,19 @@
+[ {
+  "id" : "7890c9b3-ddeb-4257-bea6-ad1117a6f8fd",
+  "patrimonio" : "NC-405060",
+  "tipo" : "Monitor Cardíaco",
+  "fabricante" : "Philips",
+  "localizacao" : "Centro Cirúrgico - Sala 01",
+  "criticidade" : "ALTA",
+  "status" : "OPERACIONAL",
+  "historicoManutencoes" : null
+}, {
+  "id" : "d9356b7e-4637-4cd2-9598-a25da22e962f",
+  "patrimonio" : "NC-102030",
+  "tipo" : "Bomba de Infusão",
+  "fabricante" : "Medtronic",
+  "localizacao" : "UTI - Leito 02",
+  "criticidade" : "ALTA",
+  "status" : "EM_MANUTENCAO",
+  "historicoManutencoes" : null
+} ]

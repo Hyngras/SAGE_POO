@@ -1,0 +1,10 @@
+[ {
+  "id" : "4de2530a-1911-4ea7-b407-248e41b203af",
+  "equipamentoId" : "d9356b7e-4637-4cd2-9598-a25da22e962f",
+  "descricaoProblema" : "oieeee",
+  "prioridade" : "BAIXA",
+  "status" : "ABERTA",
+  "dataAbertura" : [ 2025, 9, 16, 21, 25, 8, 858849900 ],
+  "dataFechamento" : null,
+  "relatorioFechamento" : null
+} ]

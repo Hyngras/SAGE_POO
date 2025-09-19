@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGE - Dashboard Engenheiro Clínico</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard-style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <nav class="sidebar">
+        <div class="sidebar-profile">
+            <img th:src="@{/images/profile-avatar.jpg}" alt="Foto do Perfil" class="profile-avatar">
+            <h2 class="profile-name">Lilian Borba</h2>
+            <p class="profile-title">Engenheiro Clínico</p>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#" class="active"><i class="fas fa-clipboard-list"></i> <span>SOLICITAÇÕES</span></a></li>
+            <li><a href="#"><i class="fas fa-wrench"></i> <span>ABRIR O.S</span></a></li>
+            <li><a href="#"><i class="fas fa-exclamation-triangle"></i> <span>O.S. CORRETIVA</span></a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> <span>SERVIÇOS AGENDADOS</span></a></li>
+            <li><a href="#"><i class="fas fa-hourglass-half"></i> <span>SERVIÇOS PENDENTES</span></a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="main-header">
+            <img th:src="@{/images/logo-sage.svg}" alt="Logo SAGE">
+        </header>
+
+        <section class="card solicitacoes-card">
+            <h2 class="card-title">SOLICITAÇÕES</h2>
+            <div class="list-item" th:each="solicitacao : ${solicitacoes}">
+                <p th:text="${solicitacao}">João Silva - MONITOR MULTIPARAMÉDICO (ENFERMARIA - 5º andar)</p>
+                <a href="#" class="link-detalhes">VER DETALHES</a>
+            </div>
+        </section>
+
+        <div class="card-group">
+            <section class="card servicos-card">
+                <h2 class="card-title">SERVIÇOS AGENDADOS</h2>
+                <div class="list-item" th:each="servico : ${servicosAgendados}">
+                    <p th:text="${servico.nome} + ' (' + ${servico.local} + ')'">Madalena Aqua (BLOCO CIRURGICO)</p>
+                </div>
+                <a href="#" class="btn-detalhes">VER DETALHES</a>
+            </section>
+
+            <section class="card servicos-card">
+                <h2 class="card-title">SERVIÇOS PENDENTES</h2>
+                <div class="list-item" th:each="servico : ${servicosPendentes}">
+                    <p th:text="${servico.nome} + ' (' + ${servico.local} + ')'">Madalena Aqua (ENFERMARIA)</p>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
