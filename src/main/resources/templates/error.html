@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocorreu um Erro</title>
+    <style th:inline="css">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        .error-page-body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* Fundo cinza muito claro, quase branco */
+            color: #495057; /* Cor de texto principal (cinza escuro) */
+            margin: 0;
+            padding: 20px; /* Garante que o card não encoste nas bordas em telas pequenas */
+            box-sizing: border-box;
+
+            /* Usando Grid para uma centralização mais robusta e moderna */
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+        }
+
+        .error-container {
+            max-width: 550px;
+            width: 100%;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Sombra mais suave e difundida */
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            border-top: 5px solid #E74C3C; /* Borda superior vermelha para indicar erro */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-icon {
+            color: #E74C3C; /* Vermelho suave, consistente com a borda */
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            font-size: 1.8rem; /* ~29px */
+            font-weight: 700;
+            color: #343A40; /* Cor de título (cinza mais escuro) */
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            font-size: 1.05rem; /* ~17px */
+            line-height: 1.6;
+            color: #6C757D; /* Cinza para texto de suporte */
+            margin-bottom: 30px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #3498DB, #2980B9); /* Gradiente de azul */
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3); /* Sombra correspondente ao azul */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-home:hover, .btn-home:focus {
+            transform: translateY(-3px); /* Efeito de 'lift' no hover */
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .error-details {
+            margin-top: 35px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .error-details summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #3498DB; /* Azul para o link 'detalhes' */
+            outline: none;
+        }
+
+        .error-details pre {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #F1F3F5; /* Fundo claro para o código */
+            border-radius: 6px;
+            color: #495057;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap; /* Garante que o texto quebre a linha */
+            word-break: break-all;
+            max-height: 200px; /* Altura máxima com barra de rolagem */
+            overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+            border: 1px solid #DEE2E6;
+        }
+
+        .error-logo {
+            max-width: 160px; /* Define um tamanho máximo para a logo */
+            height: auto;     /* Mantém a proporção da imagem */
+            margin-bottom: 25px; /* Cria um espaço entre a logo e o ícone de erro */
+        }
+    </style>
+</head>
+<body class="error-page-body">
+
+<div class="error-container">
+    <img th:src="@{/images/logo-sage.png}" alt="Logo SAGE" class="error-logo">
+    <div class="error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+    </div>
+
+    <h1 class="error-title">Oops! Algo deu errado.</h1>
+    <p class="error-message">
+        Nossa equipe já foi notificada e está trabalhando para corrigir o problema.
+        Por favor, tente novamente mais tarde.
+    </p>
+
+    <a th:href="@{/login}" class="btn-home">Voltar ao Início</a>
+
+    <div th:if="${trace}" class="error-details">
+        <details>
+            <summary>Detalhes Técnicos do Erro</summary>
+            <pre th:text="${'Status: ' + status + ' (' + error + ')\nCaminho: ' + path + '\n\n' + trace}"></pre>
+        </details>
+    </div>
+</div>
+
+</body>
+</html>
