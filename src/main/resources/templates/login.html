@@ -14,24 +14,27 @@
         <img th:src="@{/images/logo-sage.png}" alt="Logo SAGE" class="logo">
     </div>
 
-    <form class="login-form">
+    <form class="login-form" method="post" th:action="@{/login}">
         <div class="input-group">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Usuário" required>
+            <input type="text" placeholder="Usuário" name="email" required>
         </div>
         <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Senha" required>
+            <input type="password" placeholder="Senha" name="senha" required>
         </div>
         <div class="input-group">
             <i class="fas fa-building"></i>
-            <input type="text" placeholder="Departamento" required>
+            <select name="departamento" required>
+                <option value="" hidden selected>Selecione o Departamento</option>
+                <option value="engenheiro-clinico">Engenharia Clínica</option>
+                <option value="admin">Administrativo</option>
+                <option value="agente-externo">Agente Externo</option>
+            </select>
         </div>
-
         <div class="form-footer">
             <a href="#">Esqueci minha senha</a>
         </div>
-
         <button type="submit" class="btn-login">Entrar</button>
     </form>
 </div>

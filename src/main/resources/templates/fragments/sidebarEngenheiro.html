@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav class="sidebar" th:fragment="sidebarEngenheiro">
+    <div class="sidebar-profile">
+        <img th:src="@{/images/avatar-engenheiro.avif}" alt="Foto do Perfil" class="profile-avatar">
+        <h2 class="profile-name">Han Solo</h2>
+        <p class="profile-title">Engenheiro Clínico</p>
+    </div>
+
+    <ul class="sidebar-nav">
+        <li><a href="#" class="active"><i class="fas fa-desktop"></i> <span>DASHBOARD</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-circle-xmark"></i> <span>FECHAMENTO O.S</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-file"></i> <span>RELATÓRIOS</span></a></li>
+    </ul>
+
+    <div class="sidebar-logout">
+        <a th:href="@{/login}" class="logout-button">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>SAIR</span>
+        </a>
+    </div>
+</nav>
+
+</body>
+</html>

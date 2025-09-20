@@ -14,11 +14,13 @@ body {
 /* --- Sidebar (Menu Lateral) --- */
 .sidebar {
     width: 280px;
-    background-color: #2c3e50; /* Azul escuro/cinza */
+    background-color: #292F44; /* Azul escuro/cinza */
     color: white;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
 }
 
 .sidebar-profile {
@@ -79,6 +81,15 @@ body {
 .main-content {
     flex-grow: 1;
     padding: 30px;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    background-color: #292F44;
+    border-radius: 8px;
+    padding: 30px;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .main-header {
@@ -87,12 +98,11 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     margin-bottom: 30px;
-    border-top: 4px solid #2c3e50;
     text-align: center;
 }
 
 .main-header img {
-    height: 40px;
+    height: 75px;
 }
 
 .card {
@@ -122,7 +132,13 @@ body {
 
 .list-item:last-child {
     border-bottom: none;
+    padding-bottom: 0;
 }
+
+.list-item:first-of-type {
+    padding-top: 0;
+}
+
 
 .list-item p {
     margin: 0;
@@ -130,10 +146,14 @@ body {
 }
 
 .link-detalhes {
-    color: #3498db;
+    color: #6BC8EA;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9em;
+    white-space: nowrap; /* Impede que o link quebre a linha */
+    margin-left: 20px;
+    padding: 8px;
+    background-color: #E2F0F5;
 }
 
 .card-group {
@@ -146,7 +166,7 @@ body {
 }
 
 .servicos-card .list-item {
-    justify-content: flex-start; /* Alinha itens à esquerda */
+    justify-content: flex-start;
 }
 
 .btn-detalhes {
@@ -166,3 +186,36 @@ body {
 .btn-detalhes:hover {
     background-color: #e8edec;
 }
+.card-footer {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Adicione este código ao final do seu ficheiro CSS */
+
+.sidebar-logout {
+    margin-top: auto; /* Esta é a mágica que empurra o item para o final */
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.logout-button i {
+    width: 30px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.logout-button:hover {
+    background-color: #c0392b; /* Cor vermelha para indicar ação de sair */
+}
+
