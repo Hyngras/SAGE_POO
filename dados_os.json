@@ -3,8 +3,8 @@
   "equipamentoId" : "d9356b7e-4637-4cd2-9598-a25da22e962f",
   "descricaoProblema" : "oieeee",
   "prioridade" : "BAIXA",
-  "status" : "ABERTA",
+  "status" : "FECHADA",
   "dataAbertura" : [ 2025, 9, 16, 21, 25, 8, 858849900 ],
-  "dataFechamento" : null,
-  "relatorioFechamento" : null
+  "dataFechamento" : [ 2025, 9, 19, 12, 28, 12, 303532282 ],
+  "relatorioFechamento" : "Manutenção concluída com sucesso."
 } ]
