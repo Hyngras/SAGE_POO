@@ -154,6 +154,8 @@ body {
     margin-left: 20px;
     padding: 8px;
     background-color: #E2F0F5;
+    border: none;
+    cursor: pointer;
 }
 
 .card-group {
@@ -219,3 +221,61 @@ body {
     background-color: #c0392b; /* Cor vermelha para indicar ação de sair */
 }
 
+/* ============================================= */
+/* CSS PARA O MODAL (Adicione ao seu <style>)    */
+/* ============================================= */
+.modal-backdrop {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; justify-content: center; align-items: center;
+    z-index: 1000; opacity: 0; transition: opacity 0.3s ease;
+}
+.modal-backdrop.active {
+    display: flex; opacity: 1;
+}
+.modal-content {
+    background-color: white; padding: 0;
+    border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    width: 90%; max-width: 550px;
+    transform: translateY(-30px); transition: transform 0.3s ease;
+    overflow: hidden;
+}
+.modal-backdrop.active .modal-content { transform: translateY(0); }
+.modal-header, .modal-body, .modal-footer { padding: 20px 25px; }
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+}
+.modal-title { font-size: 1.25rem; font-weight: 600; color: #292F44; margin: 0; }
+.detail-group { margin-bottom: 16px; }
+.detail-label { display: block; font-size: 0.8rem; font-weight: 700; color: #6c757d; text-transform: uppercase; margin-bottom: 4px; }
+.detail-value { font-size: 1rem; color: #212529; line-height: 1.5; margin: 0; }
+.modal-footer {
+    display: flex; justify-content: flex-end; gap: 10px;
+    background-color: #f8f9fa; border-top: 1px solid #e9ecef;
+}
+.btn-modal {
+    padding: 10px 20px; border-radius: 5px; border: none;
+    font-weight: 500; cursor: pointer; text-decoration: none;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+.btn-abrir-os { background-color: #198754; color: white; } /* Verde */
+.btn-abrir-os:hover { background-color: #157347; }
+.btn-excluir { background-color: #dc3545; color: white; } /* Vermelho */
+.btn-excluir:hover { background-color: #bb2d3b; }
+.btn-fechar { background-color: #6c757d; color: white; } /* Cinza */
+.btn-fechar:hover { background-color: #5c636a; }
+
+/* Modifique esta regra */
+.modal-footer {
+    display: flex;
+    align-items: center; /* Garante alinhamento vertical */
+    gap: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Adicione esta nova regra */
+.modal-footer .btn-excluir {
+    margin-right: auto; /* Mágica acontece aqui! */
+}

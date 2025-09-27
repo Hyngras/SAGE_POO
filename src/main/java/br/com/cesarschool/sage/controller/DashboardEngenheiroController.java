@@ -1,42 +1,38 @@
 package br.com.cesarschool.sage.controller;
 
+import br.com.cesarschool.sage.model.Servico;
+import br.com.cesarschool.sage.model.Solicitacao;
+import br.com.cesarschool.sage.service.ServicoService;
+import br.com.cesarschool.sage.service.SolicitacaoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class DashboardEngenheiroController {
 
-    // Classe simples para representar os serviços nos cards
-    // Em um projeto real, esta seria uma classe do seu pacote 'model'
-    record Servico(String nome, String local) {}
+    private final SolicitacaoService solicitacaoService;
+    private final ServicoService servicoService;
+
+    // Injetando ambos os serviços no construtor
+    public DashboardEngenheiroController(SolicitacaoService solicitacaoService, ServicoService servicoService) {
+        this.solicitacaoService = solicitacaoService;
+        this.servicoService = servicoService;
+    }
 
     @GetMapping("/dashboard/engenheiro")
     public String engenheiroDashboard(Model model) {
+        // 1. Busca as solicitações do arquivo JSON através do serviço
+        List<Solicitacao> solicitacoes = solicitacaoService.findAll();
 
-        // Dados de exemplo para o card "SOLICITAÇÕES"
-        List<String> solicitacoes = List.of(
-                "João Silva - MONITOR MULTIPARAMÉDICO (ENFERMARIA - 5º andar)",
-                "Adam Sumeriano - MONITOR MULTIPARAMÉDICO (ENFERMARIA - 5º andar)"
-        );
+        // 2. Busca os serviços agendados do arquivo JSON através do serviço
+        List<Servico> servicosAgendados = servicoService.findServicosAgendados();
 
-        // Dados de exemplo para o card "SERVIÇOS AGENDADOS"
-        List<Servico> servicosAgendados = List.of(
-                new Servico("Madalena Aqua", "BLOCO CIRURGICO"),
-                new Servico("Julio Bim", "BLOCO CIRURGICO"),
-                new Servico("Mariana Clarim", "ENFERMARIA"),
-                new Servico("DIEGO RODRIGUES", "UTI")
-        );
+        // 3. Busca os serviços pendentes do arquivo JSON através do serviço
+        List<Servico> servicosPendentes = servicoService.findServicosPendentes();
 
-        // Dados de exemplo para o card "SERVIÇOS PENDENTES"
-        List<Servico> servicosPendentes = List.of(
-                new Servico("Madalena Aqua", "ENFERMARIA"),
-                new Servico("Julio Bim", "ENFERMARIA")
-        );
-
-        // Adicionando os dados ao Model para que o Thymeleaf possa usá-los
+        // Adicionando todos os dados carregados ao Model
         model.addAttribute("solicitacoes", solicitacoes);
         model.addAttribute("servicosAgendados", servicosAgendados);
         model.addAttribute("servicosPendentes", servicosPendentes);

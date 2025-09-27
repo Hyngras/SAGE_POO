@@ -19,8 +19,18 @@
             <section class="card solicitacoes-card">
                 <h2 class="card-title">SOLICITAÇÕES</h2>
                 <div class="list-item" th:each="solicitacao : ${solicitacoes}">
-                    <p th:text="${solicitacao}">João Silva - MONITOR MULTIPARAMÉDICO (ENFERMARIA - 5º andar)</p>
-                    <a href="#" class="link-detalhes">VER DETALHES</a>
+                    <p th:text="${solicitacao.solicitante()} + ' - ' + ${solicitacao.equipamento()} + ' (' + ${solicitacao.setor()} + ')'"></p>
+
+                    <button class="link-detalhes"
+                            th:data-id="${solicitacao.id()}"
+                            th:data-solicitante="${solicitacao.solicitante()}"
+                            th:data-equipamento="${solicitacao.equipamento()}"
+                            th:data-setor="${solicitacao.setor()}"
+                            th:data-data="${solicitacao.data()}"
+                            th:data-problema="${solicitacao.descricaoProblema()}"
+                            onclick="openModal(this)">
+                        VER DETALHES
+                    </button>
                 </div>
             </section>
 
@@ -30,9 +40,6 @@
                     <div class="list-item" th:each="servico : ${servicosAgendados}">
                         <p th:text="${servico.nome} + ' (' + ${servico.local} + ')'">Madalena Aqua (BLOCO CIRURGICO)</p>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" class="link-detalhes">VER DETALHES</a>
-                    </div>
                 </section>
 
                 <section class="card servicos-card">
@@ -41,6 +48,41 @@
                         <p th:text="${servico.nome} + ' (' + ${servico.local} + ')'">Madalena Aqua (ENFERMARIA)</p>
                     </div>
                 </section>
+            </div>
+
+            <div id="solicitacaoModal" class="modal-backdrop">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Detalhes da Solicitação</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="detail-group">
+                            <span class="detail-label">Equipamento</span>
+                            <p id="modal-equipamento" class="detail-value"></p>
+                        </div>
+                        <div class="detail-group">
+                            <span class="detail-label">Setor</span>
+                            <p id="modal-setor" class="detail-value"></p>
+                        </div>
+                        <div class="detail-group">
+                            <span class="detail-label">Solicitante</span>
+                            <p id="modal-solicitante" class="detail-value"></p>
+                        </div>
+                        <div class="detail-group">
+                            <span class="detail-label">Data da Solicitação</span>
+                            <p id="modal-data" class="detail-value"></p>
+                        </div>
+                        <div class="detail-group">
+                            <span class="detail-label">Descrição do Problema</span>
+                            <p id="modal-problema" class="detail-value"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-modal btn-excluir" id="btn-excluir-solicitacao">Excluir</button>
+                        <button class="btn-modal btn-fechar" onclick="closeModal()">Fechar</button>
+                        <a id="btn-os-link" href="#" class="btn-modal btn-abrir-os">Abrir O.S.</a>
+                    </div>
+                </div>
             </div>
 
         </div> </main>
@@ -56,6 +98,80 @@
     .bg-info { background-color: #0dcaf0 !important; }
     .text-dark { color: #212529 !important; }
 </style>
+
+
+<script>
+    const modal = document.getElementById('solicitacaoModal');
+    const btnExcluir = document.getElementById('btn-excluir-solicitacao');
+    const btnOsLink = document.getElementById('btn-os-link');
+
+    let currentSolicitacaoId = null;
+
+    function openModal(button) {
+        currentSolicitacaoId = button.getAttribute('data-id');
+
+        // Preenche o modal com os dados do botão
+        document.getElementById('modal-solicitante').textContent = button.getAttribute('data-solicitante');
+        document.getElementById('modal-equipamento').textContent = button.getAttribute('data-equipamento');
+        document.getElementById('modal-setor').textContent = button.getAttribute('data-setor');
+        document.getElementById('modal-data').textContent = button.getAttribute('data-data');
+        document.getElementById('modal-problema').textContent = button.getAttribute('data-problema');
+
+        // Configura os links e ações dos botões do footer
+        btnOsLink.href = `/os/abrir?solicitacaoId=${currentSolicitacaoId}`;
+
+        // Mostra o modal
+        modal.classList.add('active');
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        currentSolicitacaoId = null;
+    }
+
+    // Ação do botão Excluir
+    btnExcluir.addEventListener('click', function() {
+        if (!currentSolicitacaoId) return;
+
+        // Confirmação com o usuário
+        if (confirm(`Tem certeza que deseja excluir a Solicitação #${currentSolicitacaoId}?`)) {
+
+            // Faz a requisição DELETE para o backend
+            fetch(`/solicitacoes/${currentSolicitacaoId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    // Verifica se a resposta do servidor foi OK (status 200 a 299)
+                    if (response.ok) {
+                        // 1. Remove o item da lista na tela
+                        const itemParaRemover = document.getElementById(`solicitacao-item-${currentSolicitacaoId}`);
+                        if (itemParaRemover) {
+                            itemParaRemover.remove();
+                        }
+
+                        // 2. Fecha o modal
+                        closeModal();
+
+                        // 3. Opcional: Mostra uma mensagem de sucesso
+                        alert('Solicitação excluída com sucesso!');
+                    } else {
+                        // Se o servidor retornar um erro (ex: 404 Not Found)
+                        alert('Erro: Não foi possível excluir a solicitação.');
+                    }
+                })
+                .catch(error => {
+                    // Se houver um erro de rede
+                    console.error('Erro de rede:', error);
+                    alert('Erro de conexão. Verifique o console para mais detalhes.');
+                });
+        }
+    });
+
+    // Fecha o modal ao clicar no fundo
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+    });
+</script>
 
 </body>
 </html>

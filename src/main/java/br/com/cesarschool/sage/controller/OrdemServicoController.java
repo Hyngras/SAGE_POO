@@ -1,47 +1,40 @@
 package br.com.cesarschool.sage.controller;
 
-import br.com.cesarschool.sage.model.OrdemServico;
-import br.com.cesarschool.sage.model.PrioridadeOS;
-import br.com.cesarschool.sage.repository.EquipamentoRepository;
-import br.com.cesarschool.sage.service.OrdemServicoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.cesarschool.sage.model.Solicitacao;
+import br.com.cesarschool.sage.service.SolicitacaoService; // 1. Importe o serviço
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/os")
 public class OrdemServicoController {
 
-    @Autowired
-    private OrdemServicoService ordemServicoService;
+    private final SolicitacaoService solicitacaoService;
 
-    @Autowired
-    private EquipamentoRepository equipamentoRepository;
-
-    @GetMapping("/nova/{equipamentoId}")
-    public String showFormOs(@PathVariable String equipamentoId, Model model) {
-        OrdemServico os = new OrdemServico();
-        os.setEquipamentoId(equipamentoId);
-
-        model.addAttribute("os", os);
-        model.addAttribute("equipamento", equipamentoRepository.findById(equipamentoId).get());
-        model.addAttribute("prioridades", PrioridadeOS.values());
-
-        return "form-os";
+    // 2. Injetando o serviço no construtor (melhor prática)
+    public OrdemServicoController(SolicitacaoService solicitacaoService) {
+        this.solicitacaoService = solicitacaoService;
     }
 
-    @PostMapping("/salvar")
-    public String salvarOs(@ModelAttribute OrdemServico os) {
-        ordemServicoService.abrirOS(os);
-        return "redirect:/";
-    }
+    @GetMapping("/os/abrir")
+    public String exibirFormularioAberturaOS(@RequestParam Long solicitacaoId, Model model) {
 
-    @PostMapping("/fechar/{osId}")
-    public String fecharOs(@PathVariable String osId) {
-        // Em um sistema real, o relatório viria de um formulário
-        String relatorioSimples = "Manutenção concluída com sucesso.";
-        ordemServicoService.fecharOS(osId, relatorioSimples);
-        return "redirect:/";
+        // 3. AQUI ESTÁ A CORREÇÃO PRINCIPAL:
+        // Buscamos a solicitação usando o serviço, que lê o arquivo JSON.
+        Solicitacao solicitacao = solicitacaoService.findById(solicitacaoId)
+                .orElseThrow(() -> new IllegalArgumentException("Solicitação com ID inválido: " + solicitacaoId));
+
+        // Se a solicitação foi encontrada, o código continua normalmente.
+        model.addAttribute("solicitacao", solicitacao);
+
+        // Dados de exemplo para o dropdown de técnicos
+        List<String> tecnicos = List.of("Han Solo", "Luke Skywalker", "Leia Organa");
+        model.addAttribute("tecnicos", tecnicos);
+
+        return "abrir-os"; // Retorna o nome do arquivo HTML do formulário
     }
 }

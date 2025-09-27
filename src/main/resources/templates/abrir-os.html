@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SAGE - Abrir Ordem de Serviço</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard-engenheiro-style.css}">
+    <style>
+        .form-os { padding: 20px; }
+        .form-os .form-group { margin-bottom: 1.5rem; }
+        .form-os label { display: block; margin-bottom: .5rem; font-weight: 600; color: #495057; }
+        .form-os input, .form-os select, .form-os textarea {
+            width: 100%; padding: .75rem; font-size: 1rem; border: 1px solid #ced4da; border-radius: .25rem; box-sizing: border-box;
+        }
+        .form-os input[readonly], .form-os textarea[readonly] { background-color: #e9ecef; }
+        .form-os .btn-submit { background-color: #0d6efd; color: white; border: none; padding: 12px 25px; cursor: pointer; font-size: 1rem; border-radius: 5px; }
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <div th:replace="~{fragments/sidebarEngenheiro :: sidebarEngenheiro}"></div>
+    <main class="main-content">
+        <div class="content-wrapper">
+            <section class="card">
+                <h2 class="card-title">ABRIR ORDEM DE SERVIÇO</h2>
+
+                <form class="form-os" th:object="${solicitacao}" action="/os/salvar" method="post">
+                    <div class="form-group">
+                        <label for="equipamento">Equipamento</label>
+                        <input type="text" id="equipamento" th:value="*{equipamento()}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="setor">Setor</label>
+                        <input type="text" id="setor" th:value="*{setor()}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição do Problema</label>
+                        <textarea id="descricao" rows="4" th:text="*{descricaoProblema()}" readonly></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prioridade">Prioridade</label>
+                        <select id="prioridade" name="prioridade" required>
+                            <option value="BAIXA">Baixa</option>
+                            <option value="MEDIA" selected>Média</option>
+                            <option value="ALTA">Alta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tecnico">Técnico Responsável</label>
+                        <select id="tecnico" name="tecnico" required>
+                            <option value="" disabled selected>Selecione um técnico...</option>
+                            <option th:each="tecnico : ${tecnicos}" th:value="${tecnico}" th:text="${tecnico}"></option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Criar O.S.</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</div>
+</body>
+</html>

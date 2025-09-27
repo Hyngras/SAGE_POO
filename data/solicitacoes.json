@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "solicitante": "João Silva",
+    "equipamento": "MONITOR MULTIPARAMÉDICO",
+    "setor": "ENFERMARIA - 5º andar",
+    "data": "19/09/2025",
+    "descricaoProblema": "Tela não liga após limpeza."
+  },
+  {
+    "id": 2,
+    "solicitante": "Maria Santos",
+    "equipamento": "BOMBA DE INFUSÃO",
+    "setor": "UTI NEONATAL",
+    "data": "20/09/2025",
+    "descricaoProblema": "Alarme de oclusão soando sem motivo aparente."
+  }
+]
