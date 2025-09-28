@@ -6,9 +6,16 @@ body {
     background-color: #f4f7f6; /* Fundo cinza claro */
 }
 
+body, html {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
 .dashboard-container {
     display: flex;
     min-height: 100vh;
+    height: 100vh;
 }
 
 /* --- Sidebar (Menu Lateral) --- */
@@ -80,6 +87,8 @@ body {
 /* --- Main Content (Conteúdo Principal) --- */
 .main-content {
     flex-grow: 1;
+    overflow-y: auto;
+    height: 100vh;
     padding: 30px;
     box-sizing: border-box;
 }

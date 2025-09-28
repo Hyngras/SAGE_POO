@@ -1,7 +1,7 @@
 package br.com.cesarschool.sage.controller;
 
 import br.com.cesarschool.sage.model.Solicitacao;
-import br.com.cesarschool.sage.service.SolicitacaoService; // 1. Importe o serviço
+import br.com.cesarschool.sage.service.SolicitacaoService; 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,26 +15,75 @@ public class OrdemServicoController {
 
     private final SolicitacaoService solicitacaoService;
 
-    // 2. Injetando o serviço no construtor (melhor prática)
     public OrdemServicoController(SolicitacaoService solicitacaoService) {
         this.solicitacaoService = solicitacaoService;
     }
 
+    // --------------- codigo antigo ----------
+
     @GetMapping("/os/abrir")
     public String exibirFormularioAberturaOS(@RequestParam Long solicitacaoId, Model model) {
 
-        // 3. AQUI ESTÁ A CORREÇÃO PRINCIPAL:
-        // Buscamos a solicitação usando o serviço, que lê o arquivo JSON.
         Solicitacao solicitacao = solicitacaoService.findById(solicitacaoId)
                 .orElseThrow(() -> new IllegalArgumentException("Solicitação com ID inválido: " + solicitacaoId));
 
-        // Se a solicitação foi encontrada, o código continua normalmente.
         model.addAttribute("solicitacao", solicitacao);
 
-        // Dados de exemplo para o dropdown de técnicos
         List<String> tecnicos = List.of("Han Solo", "Luke Skywalker", "Leia Organa");
         model.addAttribute("tecnicos", tecnicos);
 
-        return "abrir-os"; // Retorna o nome do arquivo HTML do formulário
+        return "abrir-os"; 
     }
+
+    // --------------- alteracao 1 ----------------------
+    // @GetMapping("/os/abrir")
+    // public String exibirFormularioAberturaOS(@RequestParam Long solicitacaoId, Model model) {
+
+    //     Solicitacao solicitacao = solicitacaoService.findById(solicitacaoId)
+    //             .orElseThrow(() -> new IllegalArgumentException("Solicitação com ID inválido: " + solicitacaoId));
+
+    //     // adicoes e alteracoes aqui tb
+    //     solicitacao.setCategoria("ELETRICA");
+    //     solicitacao.setPrazo(3);
+    //     solicitacao.setObservacoes("Equipamento foi relatado como desligando sozinho após 2 horas de uso contínuo.");
+    //     solicitacao.setAnexoUrl("/uploads/foto-bomba.jpg"); // precisa criar campo String na classe Solicitacao
+
+    //     model.addAttribute("solicitacao", solicitacao);
+
+    //     List<String> tecnicos = List.of("Han Solo", "Luke Skywalker", "Leia Organa");
+    //     model.addAttribute("tecnicos", tecnicos);
+
+    //     return "abrir-os";
+    // }
+
+    // alteracao2 ----------------
+    // @GetMapping("/os/abrir")
+    // public String exibirFormularioAberturaOS(@RequestParam Long solicitacaoId, Model model) {
+
+    //     Solicitacao base = solicitacaoService.findById(solicitacaoId)
+    //             .orElseThrow(() -> new IllegalArgumentException("Solicitação com ID inválido: " + solicitacaoId));
+
+    //     // Cria um novo record já com os campos extras preenchidos
+    //     Solicitacao solicitacao = new Solicitacao(
+    //             base.id(),
+    //             base.solicitante(),
+    //             base.equipamento(),
+    //             base.setor(),
+    //             base.data(),
+    //             base.descricaoProblema(),
+    //             "ELETRICA",       
+    //             3,               
+    //             "Equipamento relatado como desligando sozinho após 2 horas de uso",
+    //             "/uploads/foto-bomba.jpg" 
+    //     );
+
+    //     model.addAttribute("solicitacao", solicitacao);
+
+    //     List<String> tecnicos = List.of("Han Solo", "Luke Skywalker", "Leia Organa");
+    //     model.addAttribute("tecnicos", tecnicos);
+
+    //     return "abrir-os";
+    // }
+
+
 }
