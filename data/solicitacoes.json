@@ -5,7 +5,11 @@
     "equipamento": "MONITOR MULTIPARAMÉDICO",
     "setor": "ENFERMARIA - 5º andar",
     "data": "19/09/2025",
-    "descricaoProblema": "Tela não liga após limpeza."
+    "descricaoProblema": "Tela não liga após limpeza.",
+    "categoria": "ELETRICA",
+    "prazo": 3,
+    "observacoes": "Urgência moderada.",
+    "anexoUrl": null
   },
   {
     "id": 2,
@@ -13,6 +17,10 @@
     "equipamento": "BOMBA DE INFUSÃO",
     "setor": "UTI NEONATAL",
     "data": "20/09/2025",
-    "descricaoProblema": "Alarme de oclusão soando sem motivo aparente."
+    "descricaoProblema": "Alarme de oclusão soando sem motivo aparente.",
+    "categoria": "ELETRICA",
+    "prazo": 5,
+    "observacoes": "Verificar calibração do sensor.",
+    "anexoUrl": null
   }
 ]

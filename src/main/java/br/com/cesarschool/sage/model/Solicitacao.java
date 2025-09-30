@@ -6,5 +6,9 @@ public record Solicitacao(
         String equipamento,
         String setor,
         String data,
-        String descricaoProblema
+        String descricaoProblema,
+        String categoria, // adções aq ------------
+        Integer prazo,
+        String observacoes,
+        String anexoUrl
 ) {}

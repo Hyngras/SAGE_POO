@@ -78,7 +78,11 @@ public class SolicitacaoService {
                 novaSolicitacao.equipamento(),
                 novaSolicitacao.setor(),
                 novaSolicitacao.data(),
-                novaSolicitacao.descricaoProblema()
+                novaSolicitacao.descricaoProblema(),
+                novaSolicitacao.categoria(), /// novas adicoes aq
+                novaSolicitacao.prazo(),
+                novaSolicitacao.observacoes(),
+                novaSolicitacao.anexoUrl()
         );
 
         solicitacoes.add(solicitacaoParaSalvar);

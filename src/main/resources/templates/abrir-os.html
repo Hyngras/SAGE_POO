@@ -5,7 +5,7 @@
     <title>SAGE - Abrir Ordem de Serviço</title>
     <link rel="stylesheet" th:href="@{/css/dashboard-engenheiro-style.css}">
     <style>
-        .form-os { padding: 20px; }
+        .form-os { padding: 20px; overflow-y: auto; max-height: 100vh; box-sizing: border-box;}
         .form-os .form-group { margin-bottom: 1.5rem; }
         .form-os label { display: block; margin-bottom: .5rem; font-weight: 600; color: #495057; }
         .form-os input, .form-os select, .form-os textarea {
@@ -21,7 +21,7 @@
     <main class="main-content">
         <div class="content-wrapper">
             <section class="card">
-                <h2 class="card-title">ABRIR ORDEM DE SERVIÇO</h2>
+                <h2 class="card-title">RELATÓRIO DE ORDEM DE SERVIÇO</h2>
 
                 <form class="form-os" th:object="${solicitacao}" action="/os/salvar" method="post">
                     <div class="form-group">
@@ -45,6 +45,34 @@
                             <option value="ALTA">Alta</option>
                         </select>
                     </div>
+
+                    <!-- novos: categoria do problema, prazo, observaçoes e um campo pra anexar fotos do equipamento -->
+                    <div class="form-group">
+                        <label for="categoria">Categoria do Problema</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="ELETRICA">Elétrica</option>
+                            <option value="MECANICA" selected>Mecânica</option>
+                            <option value="SOFTWARE">Software</option>
+                            <option value="CALIBRACAO">Calibração</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prazo">Prazo Estimado (em dias)</label>
+                        <input type="number" id="prazo" name="prazo" min="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações Adicionais</label>
+                        <textarea id="observacoes" name="observacoes" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="anexo">Anexar Imagem</label>
+                        <input type="file" id="anexo" name="anexo">
+                    </div>
+
                     <div class="form-group">
                         <label for="tecnico">Técnico Responsável</label>
                         <select id="tecnico" name="tecnico" required>
@@ -53,7 +81,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn-submit">Criar O.S.</button>
+                    <button type="submit" class="btn-submit">Enviar O.S.</button>
                 </form>
             </section>
         </div>
