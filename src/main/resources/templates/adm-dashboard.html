@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGE - Painel Administrativo</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/adm-style.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebarAdmn :: sidebarAdmn"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+
+        <!-- Cabeçalho do Painel -->
+        <header class="main-header">
+            <img th:src="@{/images/sage-logo.png}" alt="Logo SAGE">
+        </header>
+
+        <!-- Área de Conteúdo -->
+        <div class="content-wrapper">
+            
+            <!-- Card de Contratos -->
+            <div class="card">
+                <h3 class="card-title">CONTRATOS</h3>
+                <div class="list-item">
+                    <p>MINDRAY – Nº 0079/2025</p>
+                    <a href="#" class="link-detalhes">VER DETALHES</a>
+                </div>
+                <div class="list-item">
+                    <p>INSTRAMED – Nº 0078/2025</p>
+                    <a href="#" class="link-detalhes">VER DETALHES</a>
+                </div>
+            </div>
+
+            <!-- Card de Inventário -->
+            <div class="card">
+                <h3 class="card-title">INVENTÁRIO</h3>
+                <table class="table-inventario">
+                    <thead>
+                    <tr>
+                        <th>SETOR</th>
+                        <th>EQUIPAMENTO</th>
+                        <th>MARCA</th>
+                        <th>MODELO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Enfermaria 5º andar</td>
+                        <td>Monitor Multiparaméd.</td>
+                        <td>Mindray</td>
+                        <td>iPM 12</td>
+                    </tr>
+                    <tr>
+                        <td>Enfermaria 5º andar</td>
+                        <td>Cardioversor</td>
+                        <td>Instramed</td>
+                        <td>Dualmax</td>
+                    </tr>
+                    <tr>
+                        <td>Pediatria 2º andar</td>
+                        <td>Monitor Raio-X</td>
+                        <td>Acteon</td>
+                        <td>iPM 69</td>
+                    </tr>
+                    <tr>
+                        <td>UTI 7º andar</td>
+                        <td>Cardioversor</td>
+                        <td>Instramed</td>
+                        <td>R-X54</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

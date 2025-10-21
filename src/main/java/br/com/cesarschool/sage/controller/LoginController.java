@@ -1,12 +1,16 @@
 package br.com.cesarschool.sage.controller;
 
-import br.com.cesarschool.sage.model.LoginInfo;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.cesarschool.sage.model.LoginInfo;
 
 @Controller
 public class LoginController {
@@ -37,7 +41,7 @@ public class LoginController {
             } else if ("agente-externo".equalsIgnoreCase(departamento)) {
                 return "redirect:/dashboard/agente";
             } else if ("admin".equalsIgnoreCase(departamento)) {
-                return "redirect:/dashboard/admin";
+                return "redirect:/dashboard/admi";
             } else {
                 return "redirect:/error";
             }

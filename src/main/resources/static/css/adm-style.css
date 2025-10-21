@@ -1,0 +1,101 @@
+/* Reutilizando o estilo da sidebar anterior */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+}
+
+/* -------------------------------- PARTE DA SIDEBAR -------------------------------- */
+.sidebar {
+    width: 280px;
+    background-color: #2C304A; 
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+.sidebar-profile {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #3C455E;
+}
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-bottom: 15px;
+}
+.profile-name { margin: 0; font-weight: 500; }
+.profile-title { margin: 5px 0 0; font-size: 0.9em; color: #bdc3c7; }
+
+.sidebar-nav {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    flex-grow: 1;
+}
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+.sidebar-nav li a:hover, .sidebar-nav li a.active {
+    background-color: #36405F;
+}
+.sidebar-nav li a i {
+    width: 30px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+.sidebar-logout {
+    margin-top: auto;
+}
+.logout-button {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+.logout-button i {
+    width: 30px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+.logout-button:hover {
+    background-color: #c0392b;
+}
+
+.table-inventario {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+.table-inventario th, .table-inventario td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ecf0f1;
+    text-align: left;
+}
+.table-inventario th {
+    background-color: #2C304A;
+    color: #fff;
+    font-weight: 600;
+}
+.table-inventario tr:hover {
+    background-color: #f9f9f9;
+}
