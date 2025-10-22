@@ -14,14 +14,14 @@
 
 <div class="dashboard-container">
     <!-- Sidebar -->
-    <div th:replace="fragments/sidebarAdmin :: sidebarAdmin"></div>
+    <div th:replace="fragments/sidebarAdm :: sidebarAdmin"></div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
 
         <!-- Cabeçalho do Painel -->
         <header class="main-header">
-            <img th:src="@{/images/sage-logo.png}" alt="Logo SAGE">
+            <img th:src="@{src/main/resources/static/images/sage-logo.svg}" alt="Logo SAGE">
         </header>
 
         <!-- Área de Conteúdo -->
@@ -43,6 +43,7 @@
             <!-- Card de Inventário -->
             <div class="card">
                 <h3 class="card-title">INVENTÁRIO</h3>
+                <a href="#" class="btn-inventario">INVENTÁRIO</a>
                 <table class="table-inventario">
                     <thead>
                     <tr>
