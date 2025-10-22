@@ -41,7 +41,7 @@ public class LoginController {
             } else if ("agente-externo".equalsIgnoreCase(departamento)) {
                 return "redirect:/dashboard/agente";
             } else if ("admin".equalsIgnoreCase(departamento)) {
-                return "redirect:/dashboard/admi";
+                return "redirect:/dashboard/admin";
             } else {
                 return "redirect:/error";
             }
