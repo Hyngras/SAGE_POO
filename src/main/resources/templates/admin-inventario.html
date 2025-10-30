@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGE - Inventário de Equipamentos</title>
+
+    <link rel="stylesheet" th:href="@{/css/inventario.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <!-- Sidebar existente -->
+    <div th:replace="fragments/sidebarAdm :: sidebarAdmin"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="inventario-header">
+                <h2>Inventário de Equipamentos</h2>
+                <a href="#" class="btn-novo-equipamento">
+                    <i class="fa-solid fa-plus-circle"></i> Novo equipamento
+                </a>
+            </div>
+
+            <table class="tabela-inventario">
+                <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Setor</th>
+                    <th>Equipamento</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img th:src="@{/images/equipamentos.jpg}" alt="Equipamento" class="equip-img"></td>
+                    <td>Enfermaria 5º andar</td>
+                    <td>Monitor Multiparamédico</td>
+                    <td>Mindray</td>
+                    <td>iPM 12</td>
+                    <td class="acoes">
+                        <a href="#" class="btn-acoes editar"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn-acoes deletar"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+
+                <!-- Repita exemplo para mockup -->
+                <tr>
+                    <td><img th:src="@{/images/equip2.jpg}" alt="Equipamento" class="equip-img"></td>
+                    <td>UTI 7º andar</td>
+                    <td>Cardioversor</td>
+                    <td>Instramed</td>
+                    <td>Dualmax</td>
+                    <td class="acoes">
+                        <a href="#" class="btn-acoes editar"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn-acoes deletar"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

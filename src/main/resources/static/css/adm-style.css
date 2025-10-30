@@ -80,6 +80,22 @@ body {
     background-color: #c0392b;
 }
 
+.card-btn-inventario{
+    display: grid;
+    grid-template-columns: 5fr auto;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 10px;
+}
+
+.card-btn-inventario .card-title {
+    justify-self: start;
+}
+
+.card-btn-inventario .btn-inventario {
+    justify-self: center;
+}
+
 .table-inventario {
     width: 100%;
     border-collapse: collapse;
@@ -92,8 +108,7 @@ body {
     text-align: left;
 }
 .table-inventario th {
-    background-color: #2C304A;
-    color: #fff;
+    background-color: white;
     font-weight: 600;
 }
 .table-inventario tr:hover {
@@ -107,7 +122,6 @@ body {
     height: 100vh;
 }
 
-/* Área branca de conteúdo à direita */
 .main-content {
     flex-grow: 1;
     overflow-y: auto;
@@ -168,8 +182,7 @@ body {
 }
 .list-item p {
     margin: 0;
-    /* color: #2c3e50; */
-    color: #ffffff;
+    color: #2c3e50;
     font-weight: 500;
 }
 

@@ -21,7 +21,7 @@
 
         <!-- Cabeçalho do Painel -->
         <header class="main-header">
-            <img th:src="@{src/main/resources/static/images/sage-logo.svg}" alt="Logo SAGE">
+            <img th:src="@{/images/sage-logo.svg}" alt="Logo SAGE">
         </header>
 
         <!-- Área de Conteúdo -->
@@ -42,8 +42,10 @@
 
             <!-- Card de Inventário -->
             <div class="card">
-                <h3 class="card-title">INVENTÁRIO</h3>
-                <a href="#" class="btn-inventario">INVENTÁRIO</a>
+                <div class="card-btn-inventario">
+                    <h3 class="card-title">INVENTÁRIO</h3>
+                    <a th:href="@{/admin/inventario}" class="btn-inventario">INVENTÁRIO</a>
+                </div>
                 <table class="table-inventario">
                     <thead>
                     <tr>

@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+}
+
+/* Layout principal */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Wrapper e cabeçalho */
+.content-wrapper {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.inventario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.inventario-header h2 {
+    margin: 0;
+    color: #2C304A;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+.btn-novo-equipamento {
+    background-color: #eaf6fd;
+    padding: 8px 14px;
+    color: #2980b9;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.btn-novo-equipamento i {
+    margin-right: 6px;
+}
+.btn-novo-equipamento:hover {
+    background-color: #d6ecfb;
+}
+
+/* Tabela */
+.tabela-inventario {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tabela-inventario th, .tabela-inventario td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ecf0f1;
+    text-align: left;
+}
+.tabela-inventario th {
+    background-color: #f4f7f6;
+    color: #2c3e50;
+    font-weight: 700;
+}
+.tabela-inventario tr:hover {
+    background-color: #fafafa;
+}
+
+/* Imagens */
+.equip-img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Botões de ação */
+.acoes {
+    text-align: center;
+}
+.btn-acoes {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: color 0.3s;
+    font-size: 1em;
+}
+.btn-acoes.editar {
+    color: #2980b9;
+}
+.btn-acoes.deletar {
+    color: #c0392b;
+}
+.btn-acoes:hover {
+    opacity: 0.7;
+}
