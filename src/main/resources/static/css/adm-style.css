@@ -1,0 +1,259 @@
+/* Reutilizando o estilo da sidebar anterior */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+}
+
+/* -------------------------------- PARTE DA SIDEBAR -------------------------------- */
+.sidebar {
+    width: 280px;
+    background-color: #2C304A; 
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+.sidebar-profile {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #3C455E;
+}
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-bottom: 15px;
+}
+.profile-name { margin: 0; font-weight: 500; }
+.profile-title { margin: 5px 0 0; font-size: 0.9em; color: #bdc3c7; }
+
+.sidebar-nav {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    flex-grow: 1;
+}
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+.sidebar-nav li a:hover, .sidebar-nav li a.active {
+    background-color: #36405F;
+}
+.sidebar-nav li a i {
+    width: 30px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+.sidebar-logout {
+    margin-top: auto;
+}
+.logout-button {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+.logout-button i {
+    width: 30px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+.logout-button:hover {
+    background-color: #c0392b;
+}
+
+.card-btn-inventario{
+    display: grid;
+    grid-template-columns: 5fr auto;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 10px;
+}
+
+.card-btn-inventario .card-title {
+    justify-self: start;
+}
+
+.card-btn-inventario .btn-inventario {
+    justify-self: center;
+}
+
+.table-inventario {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+.table-inventario th, .table-inventario td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ecf0f1;
+    text-align: left;
+}
+.table-inventario th {
+    background-color: white;
+    font-weight: 600;
+}
+.table-inventario tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* =================== CONTEÚDO PRINCIPAL (MAIN CONTENT) =================== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 40px;
+    background-color: #f4f7f6;
+}
+
+/* Caixa que agrupa os cards de contratos e inventário */
+.content-wrapper {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header com logo */
+.main-header {
+    background-color: #2C304A;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.main-header img {
+    max-height: 80px;
+}
+
+/* =================== CAIXAS (CARDS) =================== */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.card-title {
+    background-color: #2C304A;
+    color: #ffffff;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* =================== ÁREA DE CONTRATOS =================== */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+.list-item:last-child {
+    border-bottom: none;
+}
+.list-item p {
+    margin: 0;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.link-detalhes {
+    color: #5faee3;
+    background-color: #eaf6fd;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+.link-detalhes:hover {
+    background-color: #d6ecfb;
+}
+
+/* =================== ÁREA DE INVENTÁRIO =================== */
+.table-inventario {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+.table-inventario th, .table-inventario td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ecf0f1;
+    text-align: left;
+}
+.table-inventario th {
+    font-weight: 700;
+    color: #2c3e50;
+}
+.table-inventario tr:hover {
+    background-color: #f8f8f8;
+}
+
+/* ======================= HEADER DO CARD ======================= */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* "Etiqueta" vermelha INVENTÁRIO */
+.btn-inventario {
+    background-color: #c0392b;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+}
+.btn-inventario:hover {
+    background-color: #e74c3c;
+}
+
+/* =================== AJUSTE RESPONSIVO =================== */
+@media (max-width: 900px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        height: auto;
+    }
+    .main-content {
+        padding: 20px;
+    }
+}

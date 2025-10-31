@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<nav class="sidebar" th:fragment="sidebarAdmin">
+    <div class="sidebar-profile">
+        <img th:src="@{/images/imagem-mulher.jpg}" alt="Foto do Perfil" class="profile-avatar">
+        <h2 class="profile-name">Amanda Ramalho</h2>
+        <p class="profile-title">Auxiliar Administrativo</p>
+    </div>
+
+    <ul class="sidebar-nav">
+        <li><a href="#" class="active"><i class="fa-solid fa-file-contract"></i> <span>CONTRATOS</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-file-circle-plus"></i> <span>ADICIONAR CONTRATO</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-boxes-stacked"></i> <span>INVENTÁRIO</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-calendar-check"></i> <span>SERVIÇOS AGENDADOS</span></a></li>
+    </ul>
+
+    <div class="sidebar-logout">
+        <a th:href="@{/login}" class="logout-button">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>SAIR</span>
+        </a>
+    </div>
+</nav>
+</body>
+</html>
