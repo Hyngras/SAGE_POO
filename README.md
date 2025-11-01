@@ -162,11 +162,6 @@ Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administr
 <pre><code>mvn test
 </code></pre>
 
-<p><strong>Resultado esperado:</strong></p>
-<pre><code>Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
-BUILD SUCCESS
-</code></pre>
-
 <h3>Screencast dos Testes Automatizados</h3>
 <p>Screencast apresentando os testes executados no terminal, com os resultados do Maven:</p>
 <p><a href="https://youtu.be/YRql8VrhqRg" target="_blank"><strong>Assista no YouTube</strong></a></p>
