@@ -146,7 +146,7 @@ Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administr
 <h3>Issue/bug tracker atualizado:</h3>
 <img width="1886" height="799" alt="image" src="https://github.com/user-attachments/assets/e1a297a8-af75-4239-bed2-62a1eff554b1" />
 
-<hr>
+<hr>  
 
 <h2>Testes Automatizados</h2>
 
@@ -165,3 +165,9 @@ Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administr
 <h3>Screencast dos Testes Automatizados</h3>
 <p>Screencast apresentando os testes executados no terminal, com os resultados do Maven:</p>
 <p><a href="https://youtu.be/YRql8VrhqRg" target="_blank"><strong>Assista no YouTube</strong></a></p>
+
+<h3>Screencast das telas</h3>
+<p><a href="https://youtu.be/LjIiI4lecJ4" target="_blank"><strong>Assista no YouTube</strong></a></p>
+
+
+
