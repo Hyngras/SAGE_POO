@@ -25,7 +25,7 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
 ## Entregas do Projeto
 
 <details>
-  <summary><strong>🚀 Entrega 01</strong></summary>
+  <summary><strong>📦 Entrega 01</strong></summary>
 
   <p>
     A primeira entrega visa garantir o alinhamento inicial do projeto, 
@@ -33,19 +33,19 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
     a base visual para seu desenvolvimento.
   </p>
 
-  <h3>📌 Critérios exigidos</h3>
+  <h3> Critérios exigidos</h3>
 
   <ul>
     <li>
-      📄 Documento descrevendo regras de negócio e cenários BDD: 
+      Documento descrevendo regras de negócio e cenários BDD: 
       <a href="Arquivos/Historias.md"><strong>Historias</strong></a>
     </li>
     <li>
-      🎨 Link para o protótipo: 
+      Link para o protótipo: 
       <a href="https://www.figma.com/design/fNpzjR1EqV8dfAkAnqauC4/SAGE?node-id=0-1&p=f"><strong>Figma - Protótipo</strong></a>
     </li>
     <li>
-      🎥 Screencast apresentando o protótipo: 
+      Screencast apresentando o protótipo: 
       <a href="https://youtu.be/WLbz_-dBa8k"><strong>YouTube - Protótipo</strong></a>
     </li>
   </ul>
