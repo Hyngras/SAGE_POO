@@ -146,4 +146,27 @@ Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administr
 <h3>Issue/bug tracker atualizado:</h3>
 <img width="1886" height="799" alt="image" src="https://github.com/user-attachments/assets/e1a297a8-af75-4239-bed2-62a1eff554b1" />
 
----
+<hr>
+
+<h2>Testes Automatizados</h2>
+
+<p>Os testes foram criados com <strong>JUnit 5</strong> e simulam o comportamento das histórias <strong>HU-002</strong> e <strong>HU-004</strong>.</p>
+
+<h3>Casos de Teste</h3>
+<ul>
+  <li><strong>HU-002:</strong> Valida a busca de um equipamento pelo nome.</li>
+  <li><strong>HU-004:</strong> Verifica a consistência dos indicadores do dashboard administrativo.</li>
+</ul>
+
+<h3>Execução dos Testes</h3>
+<pre><code>mvn test
+</code></pre>
+
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+</code></pre>
+
+<h3>Screencast dos Testes Automatizados</h3>
+<p>Screencast apresentando os testes executados no terminal, com os resultados do Maven:</p>
+<p><a href="https://youtu.be/YRql8VrhqRg" target="_blank"><strong>Assista no YouTube</strong></a></p>
