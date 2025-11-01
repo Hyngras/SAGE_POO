@@ -117,16 +117,33 @@ O sistema tem como objetivo gerenciar a manutenção de equipamentos hospitalare
   <hr>
 
   <h3>✅ Segunda história implementada</h3>
-  <p><strong>HU-004 — Dashboard Administrativo</strong></p>
-  <p><em>História do Usuário:</em><br>
-  Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administrativo com dados sobre equipamentos, ordens de serviço e status de manutenção, para acompanhar a performance dos recursos de maneira eficiente.</p>
-  <img width="1280" height="564" src="https://github.com/user-attachments/assets/cc8e6a93-72bd-4ce5-ab5e-fa9de522c1d0" alt="Dashboard Administrativo" width="800" style="border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
+<p><strong>HU-004 — Dashboard Administrativo</strong></p>
+<p><em>História do Usuário:</em><br>
+Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administrativo com dados sobre equipamentos, ordens de serviço e status de manutenção, para acompanhar a performance dos recursos de maneira eficiente.</p>
 
-  <h3>Issue/bug tracker atualizado:</h3>
-  <img width="1886" height="799" alt="image" src="https://github.com/user-attachments/assets/e1a297a8-af75-4239-bed2-62a1eff554b1" />
+<h4>Critérios de Aceitação</h4>
 
+- Exibir indicadores principais: total de equipamentos, ordens de serviço abertas e status de manutenção.  
+- Permitir filtro por período e tipo de manutenção.  
+- Exibir mensagem “Sem registros para o período” quando não houver dados.
 
-</details>
-</details>
+<h4>Regras de Negócio (RN)</h4>
+
+- RN1: O status do equipamento deve refletir a última O.S. associada.  
+- RN2: O semáforo indica criticidade (verde ≥ 80%, amarelo 60–79%, vermelho < 60%).  
+- RN3: Contagem de O.S. abertas considera apenas estados “ABERTA” e “EM_ANDAMENTO”.
+
+<h4>Cenários BDD</h4>
+
+- Dado que existam equipamentos e O.S. registradas, quando o usuário acessar o dashboard, então os indicadores devem ser exibidos corretamente.  
+- Dado que o usuário aplique um filtro de data, quando o período for válido, então os dados devem refletir apenas esse intervalo.  
+- Dado que não existam registros no período selecionado, quando o dashboard for atualizado, então deve exibir zero e a mensagem “Sem registros para o período”.
+
+<br>
+
+<img width="1280" height="564" src="https://github.com/user-attachments/assets/cc8e6a93-72bd-4ce5-ab5e-fa9de522c1d0" alt="Dashboard Administrativo" width="800" style="border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
+
+<h3>Issue/bug tracker atualizado:</h3>
+<img width="1886" height="799" alt="image" src="https://github.com/user-attachments/assets/e1a297a8-af75-4239-bed2-62a1eff554b1" />
 
 ---
