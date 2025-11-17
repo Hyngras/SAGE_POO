@@ -102,3 +102,194 @@ body {
     outline: none;
     border-color: #3498db;
 }
+
+/* --- Estilos Adicionais para o Portal do Agente Externo --- */
+
+.login-header p.portal-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+}
+
+.portal-menu {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.menu-option {
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    background-color: #f8f9fa; /* Fundo cinza claro */
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.menu-option:hover {
+    background-color: #ecf0f1;
+    border-color: #bdc3c7;
+}
+
+.menu-option i {
+    color: #3498db; /* Azul dos ícones */
+    font-size: 1.3em;
+    margin-right: 15px;
+    width: 25px; /* Alinha o texto mesmo com ícones diferentes */
+    text-align: center;
+}
+
+.btn-sair {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c; /* Vermelho */
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-sair i {
+    margin-right: 8px;
+}
+
+.btn-sair:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+}
+
+/* --- Estilos Adicionais para Formulários Internos --- */
+
+.form-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.form-header h2 {
+    font-size: 1em;
+    color: #7f8c8d; /* Cinza subtítulo */
+    margin: 0;
+    font-weight: 500;
+}
+
+.form-header h3 {
+    font-size: 1.4em;
+    color: #34495e; /* Azul escuro */
+    margin: 5px 0 0 0;
+    font-weight: 700;
+}
+
+.form-header h3 i {
+    color: #3498db; /* Azul do ícone */
+    margin-right: 8px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
+    gap: 20px;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* Faz um item do grid ocupar as 2 colunas */
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="datetime-local"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ecf0f1;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-group input[type="datetime-local"]:disabled {
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Azul primário */
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ecf0f1;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #7f8c8d; /* Cinza */
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+}

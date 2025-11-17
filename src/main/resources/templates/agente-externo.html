@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGE - Portal do Agente Externo</title>
+    
+    <link rel="stylesheet" th:href="@{/css/login-styles.css}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<div class="login-container">
+    
+    <div class="login-header">
+        <img th:src="@{/images/sage-logo.svg}" alt="Logo SAGE" class="logo">
+        <p class="portal-title">PORTAL DO AGENTE EXTERNO</p>
+    </div>
+
+<div class="portal-menu">
+    <a th:href="@{/dashboard/solicitar-manutencao}" class="menu-option">
+        <i class="fas fa-wrench"></i>
+        <span>Solicitar manutenção corretiva</span>
+    </a>
+    
+    <a th:href="@{/dashboard/avaliar-servico}" class="menu-option">
+        <i class="fas fa-star"></i>
+        <span>Avaliar serviço ou funcionário</span>
+    </a>
+    
+    <a th:href="@{/dashboard/solicitar-instrucao}" class="menu-option">
+        <i class="fas fa-question-circle"></i>
+        <span>Solicitar instrução de equipamento</span>
+    </a>
+</div>
+    
+    <a th:href="@{/login}" class="btn-sair">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sair</span>
+    </a>
+
+</div>
+
+</body>
+</html>

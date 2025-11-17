@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SAGE - Solicitar Instrução</title>
+    <link rel="stylesheet" th:href="@{/css/login-styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<div class="login-container">
+    
+    <div class="form-header">
+        <img th:src="@{/images/sage-logo.svg}" alt="Logo SAGE" class="logo" style="height: 40px; margin-bottom: 10px;">
+        <h2>Suporte ao Usuário</h2>
+        <h3><i class="fas fa-question-circle"></i> Solicitar instrução de equipamento</h3>
+    </div>
+
+    <form class="form-grid">
+        <div class="form-group">
+            <label for="equipamento">Equipamento</label>
+            <input type="text" id="equipamento" placeholder="Ex: Bomba de infusão, Monitor">
+        </div>
+        
+        <div class="form-group">
+            <label for="setor">Setor</label>
+            <select id="setor">
+                <option value="">Selecione</option>
+                <option value="uti">UTI</option>
+                <option value="enf">Enfermaria</option>
+            </select>
+        </div>
+        
+        <div class="form-group full-width">
+            <label for="tipo-instrucao">Tipo de instrução</label>
+            <select id="tipo-instrucao">
+                <option value="">Selecione</option>
+                <option value="uso">Instrução de uso básico</option>
+                <option value="limpeza">Procedimento de limpeza</option>
+                <option value="calibracao">Verificação de calibração</option>
+                <option value="outra">Outra dúvida</option>
+            </select>
+        </div>
+
+        <div class="form-group full-width">
+            <label for="duvida">Descreva sua dúvida</label>
+            <textarea id="duvida" placeholder="Seja específico sobre a sua dúvida..."></textarea>
+        </div>
+
+        <div class="form-group full-width">
+             <button type="submit" class="btn-primary">Solicitar instrução</button>
+             <a th:href="@{/dashboard/agente}" class="btn-secondary">Voltar</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
