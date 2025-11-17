@@ -169,5 +169,147 @@ Como <strong>gestor hospitalar</strong>, quero visualizar um dashboard administr
 <h3>Screencast das telas</h3>
 <p><a href="https://youtu.be/LjIiI4lecJ4" target="_blank"><strong>Assista no YouTube</strong></a></p>
 
+</details>
+
+<details>
+    <summary><strong>📦 Entrega 04</strong></summary>
+
+  <p>A quarta entrega foca na implementação do fluxo completo do <strong>Agente Externo</strong>, criando um portal de serviços simplificado e os formulários de solicitação essenciais para esse perfil de usuário.</p>
+
+  <hr>
+
+  <h3>✅ Primeira história implementada</h3>
+  <p><strong>HU-014 — Portal do Agente Externo</strong></p>
+  <p><em>História do Usuário:</em><br>
+  Como <strong>agente externo (ex: enfermeiro, funcionário)</strong>, quero acessar um portal simplificado, para poder rapidamente navegar para as funções de solicitação, avaliação ou instrução.</p>
+
+  <h4>Critérios de Aceitação:</h4>
+  <ul>
+    <li>O portal deve exibir três opções claras: "Solicitar manutenção corretiva", "Avaliar serviço ou funcionário" e "Solicitar instrução de equipamento".</li>
+    <li>O portal deve ter um botão de "Sair" que retorna à tela de Login.</li>
+    <li>O design deve ser limpo e centralizado, seguindo a identidade visual do SAGE.</li>
+  </ul>
+
+  <h4>Regras de Negócio (RN):</h4>
+  <ul>
+    <li><strong>RN1:</strong> O agente externo não pode, em nenhuma circunstância, aceder aos dashboards de engenharia ou administração.</li>
+    <li><strong>RN2:</strong> O portal serve como um "hub" de navegação, e cada opção deve levar ao seu respectivo fluxo.</li>
+  </ul>
+
+  <h4>Cenários BDD:</h4>
+  <ul>
+    <li>Dado que sou um agente externo logado, quando eu acedo ao meu painel, então eu devo ver o portal simplificado com as três opções de serviço.</li>
+    <li>Dado que estou no portal, quando eu clico em "Sair", então eu devo ser deslogado e redirecionado para a tela de Login.</li>
+  </ul>
+
+  <img width="1916" height="855" alt="image" src="https://github.com/user-attachments/assets/e1453ca9-c19a-4461-bd01-303133928111" />
 
 
+  <hr>
+
+  <h3>✅ Segunda história implementada</h3>
+<p><strong>HU-015 — Formulários de Solicitação do Agente</strong></p>
+<p><em>História do Usuário:</em><br>
+Como <strong>agente externo</strong>, quero usar as opções do portal para abrir formulários específicos e registrar as minhas necessidades (manutenção, avaliação ou instrução).</p>
+
+<h4>Critérios de Aceitação</h4>
+
+- Ao clicar em "Solicitar manutenção corretiva", o sistema deve exibir o formulário de manutenção (HU-015.1).
+- Ao clicar em "Avaliar serviço ou funcionário", o sistema deve exibir o formulário de avaliação (HU-015.2).
+- Ao clicar em "Solicitar instrução de equipamento", o sistema deve exibir o formulário de instrução (HU-015.3).
+- Todos os formulários devem seguir o mesmo padrão visual e ter um botão "Voltar" que retorne ao portal.
+
+<h4>Regras de Negócio (RN)</h4>
+
+- RN1: Cada formulário deve capturar as informações mínimas necessárias para a respectiva solicitação (ex: tipo de equipamento, descrição do problema).
+- RN2: A submissão de cada formulário deve (futuramente) gerar um novo registo rastreável no sistema para a equipe técnica.
+
+<h4>Cenários BDD</h4>
+
+- Dado que estou no portal, quando clico em "Solicitar manutenção corretiva", então o formulário `solicitar-manutencao` é exibido.
+- Dado que estou no portal, quando clico em "Avaliar serviço...", então o formulário `avaliar-servico` é exibido.
+- Dado que estou no formulário de instrução, quando clico em "Voltar", então eu devo retornar para o `/portal/agente`.
+
+<br>
+
+<p><strong>Exemplo de Formulário: Solicitação de Manutenção Corretiva (HU-015.1)</strong></p>
+<img width="1917" height="869" alt="image" src="https://github.com/user-attachments/assets/d6d09fb8-b1ab-4064-b94f-b76156965cec" alt="Formulário de Solicitação de Manutenção" width="800" style="border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
+
+<br>
+<p><strong>Exemplo de Formulário: Avaliar Serviço ou Funcionário (HU-015.2)</strong></p>
+<img width="1913" height="862" alt="image" src="https://github.com/user-attachments/assets/7298a969-ebc9-423e-93ce-689c0d71aaf5" alt="Formulário de Avaliação" width="800" style="border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
+
+<br>
+<p><strong>Exemplo de Formulário: Solicitar Instrução de Equipamento (HU-015.3)</strong></p>
+<img width="1912" height="886" alt="image" src="https://github.com/user-attachments/assets/9a9eb7d4-1b3d-4e02-a029-9db816dcc6ee" alt="Formulário de Instrução" width="800" style="border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
+
+
+<h3>Issue/bug tracker atualizado:</h3>
+<img width="1912" height="854" alt="image" src="https://github.com/user-attachments/assets/d90df111-ef42-402c-a1a9-3947d44d279f" />
+
+
+<hr>  
+
+<h2>Testes Automatizados</h2>
+
+<p>Os testes foram criados com <strong>JUnit 5</strong> e <strong>Spring Boot Test</strong> para simular o comportamento dos controllers (<code>@GetMapping</code>) que servem as novas telas.</p>
+
+<h3>Casos de Teste</h3>
+<ul>
+  <li><strong>HU-014:</strong> Valida se o acesso ao <code>/dashboard/agente</code> retorna o status HTTP 200 (OK) e renderiza a view "agente-externo".</li>
+  <li><strong>HU-015.1:</strong> Valida se o acesso ao <code>/dashboard/solicitar-manutencao</code> retorna o status HTTP 200 (OK) e renderiza a view "solicitar-manutencao".</li>
+  <li><strong>HU-015.2:</strong> Valida se o acesso ao <code>/dashboard/avaliar-servico</code> retorna o status HTTP 200 (OK) e renderiza a view "avaliar-servico".</li>
+   <li><strong>HU-015.3:</strong> Valida se o acesso ao <code>/dashboard/solicitar-instrucao</code> retorna o status HTTP 200 (OK) e renderiza a view "solicitar-instrucao".</li>
+</ul>
+
+<h3>Execução dos Testes</h3>
+<pre><code>mvn test
+</code></pre>
+
+<h3>Screencast dos Testes Automatizados</h3>
+<p>Screencast apresentando os testes executados no terminal, com os resultados do Maven:</p>
+<p><a href="[LINK_DO_SEU_VIDEO_TESTES]" target="_blank"><strong>Assista no YouTube</strong></a></p>
+
+<h3>Screencast das telas</h3>
+<p>Screencast apresentando a navegação entre o Portal do Agente Externo e os seus três formulários de solicitação:</p>
+<p><a href="[LINK_DO_SEU_VIDEO_TELAS]" target="_blank"><strong>Assista no YouTube</strong></a></p>
+
+</details>
+
+<hr>
+
+## 🚀 Como Executar o Projeto (Ambiente de Desenvolvimento)
+
+Siga estes passos para configurar e executar a aplicação localmente na sua máquina.
+
+### Requisitos Mínimos
+
+* **Java (JDK):** Versão 17 ou superior.
+* **IntelliJ IDEA** (ou outra IDE de sua preferência, como VS Code com a extensão Java).
+* **Maven:** Versão 3.8 ou superior (geralmente já vem integrado no IntelliJ).
+
+---
+
+### Passos para Executar
+
+1.  **Clone o Repositório:**
+    ```bash
+    git clone [https://github.com/Hyngras/SAGE_POO.git](https://github.com/Hyngras/SAGE_POO.git)
+    cd SAGE_POO
+    ```
+
+2.  **Abra o Projeto na sua IDE:**
+    * **IntelliJ IDEA:** Selecione `File` > `Open...` e escolha a pasta `SAGE_POO` que você acabou de clonar. O IntelliJ irá detetar o ficheiro `pom.xml` e carregar todas as dependências do Maven automaticamente.
+    * **VS Code:** Abra a pasta do projeto. Certifique-se de que tem o "Extension Pack for Java" instalado.
+
+3.  **Execute a Aplicação:**
+    * Encontre o ficheiro `SageApplication.java` (em `src/main/java/br/com/cesarschool/sage`).
+    * **No IntelliJ:** Clique com o botão direito no ficheiro e selecione **Run 'SageApplication'**.
+    * **No VS Code:** Abra o ficheiro e clique em **Run** acima do método `main`.
+
+4.  **Acesse a Aplicação:**
+    * O servidor Spring Boot iniciará. Você verá no seu terminal uma mensagem a indicar `Tomcat started on port 8080 (http)`.
+    * Abra o seu navegador e acesse: `http://localhost:8080`
+    * Para diretamente aos dashboards, utilize os URLs:
+        * `http://localhost:8080/dashboard/engenheiro`
+        * `http://localhost:8080/dashboard/admin`
