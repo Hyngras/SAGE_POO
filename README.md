@@ -278,7 +278,7 @@ Como <strong>agente externo</strong>, quero usar as opções do portal para abri
 
 <hr>
 
-## 🚀 Como Executar o Projeto (Ambiente de Desenvolvimento)
+## Como Executar o Projeto (Ambiente de Desenvolvimento)
 
 Siga estes passos para configurar e executar a aplicação localmente na sua máquina.
 
