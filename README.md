@@ -268,11 +268,11 @@ Como <strong>agente externo</strong>, quero usar as opções do portal para abri
 
 <h3>Screencast dos Testes Automatizados</h3>
 <p>Screencast apresentando os testes executados no terminal, com os resultados do Maven:</p>
-<p><a href="[https://youtu.be/J2CbcwRmgi8]" target="_blank"><strong>Assista no YouTube</strong></a></p>
+<p><a href="https://youtu.be/J2CbcwRmgi8" target="_blank"><strong>Assista no YouTube</strong></a></p>
 
 <h3>Screencast das telas</h3>
 <p>Screencast apresentando a navegação entre o Portal do Agente Externo e os seus três formulários de solicitação:</p>
-<p><a href="[https://youtu.be/52okUwooVog]" target="_blank"><strong>Assista no YouTube</strong></a></p>
+<p><a href="https://youtu.be/52okUwooVog" target="_blank"><strong>Assista no YouTube</strong></a></p>
 
 </details>
 
